@@ -3,11 +3,19 @@ $min= 8;
 $max= 32;
 $message= "Seleziona un numero di caratteri da $min a $max";
 
+if(isset($_POST['lngPassword']) && !empty($_POST['lngPassword'])){
+  
+  $passlen = $_POST['lngPassword'];
 
-$lngPassword = $_POST['lngPassword'];
-var_dump($lngPassword);
+  //si può ovviare il controllo inserendo un min ed un max nel tag input number
+  if($passlen < $min || $passlen > $max){
+    $message = "!!!! Il numero inserito deve essere compreso fra $min e $max !!!!";
 
-
+  }else{
+    $message = "il numero scelto è $passlen";
+    var_dump('manda la funzione');
+  }
+}
 
 require_once __DIR__ . '/partials/head.php';
 ?>
@@ -20,12 +28,12 @@ require_once __DIR__ . '/partials/head.php';
     <p><?php echo $message ?></p>
 
     <form action="index.php" method="POST">
-      <input type="number" name="lngPassword" min="<?php echo $min ?>" max="<?php echo $max ?>">
+      <input type="number" name="lngPassword" >
     </form>
 
     <div>
       <h4>Password Generata</h4>
-      <p>seleziona i caratteri</p>
+      <p></p>
     </div>
   </div>
   
