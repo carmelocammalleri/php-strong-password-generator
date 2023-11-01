@@ -2,6 +2,8 @@
 $min= 8;
 $max= 32;
 $message= "Seleziona un numero di caratteri da $min a $max";
+$text= "In generazione";
+$password= "";
 
 //si controlla se passa anche una stringa vuota
 if(isset($_POST['lngPassword']) && !empty($_POST['lngPassword'])){
@@ -12,7 +14,7 @@ if(isset($_POST['lngPassword']) && !empty($_POST['lngPassword'])){
   if($passlen < $min || $passlen > $max){
     $message = "!!!! Il numero inserito deve essere compreso fra $min e $max !!!!";
 
-  }else{
+  } else{
     $message = "La tua password ha $passlen caratteri";
     
     session_start();
@@ -46,7 +48,16 @@ if(isset($_POST['lngPassword']) && !empty($_POST['lngPassword'])){
       return str_shuffle($password);
     }
     
+    //parte la funzione
     $_SESSION['randomPassword'] = passwordGenerator($passlen);
+
+    if($_SESSION['randomPassword']){
+      $password = $_SESSION['randomPassword'];
+      $text= "";
+    }else {
+      //non ho capito perchè
+      header('Location: ./index.php');
+    }
   }
 }
 
@@ -63,10 +74,10 @@ require_once __DIR__ . '/partials/head.php';
     </form>
     <p><?php echo $message ?></p>
 
-
     <div>
       <h4>Password Generata</h4>
-      <p></p>
+      <p><?php echo $password ?></p>
+      <p><?php echo $text ?></p>
     </div>
   </div>
   
