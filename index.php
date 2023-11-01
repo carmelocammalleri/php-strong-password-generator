@@ -21,7 +21,7 @@ if(isset($_POST['lngPassword']) && !empty($_POST['lngPassword'])){
     function passwordGenerator($length){
       //var_dump('manda la funzione');
 
-      $psw = '';
+      $password = '';
       $indexChars = 0;
       $listChars = [
           'abcdefghijklmnopqrstuvwxyz',
@@ -31,13 +31,20 @@ if(isset($_POST['lngPassword']) && !empty($_POST['lngPassword'])){
       ];
       
       //ciclo il randomizzatore
-      while(strlen($psw) < $length){
-        
-     
+      while(strlen($password) < $length){
+        $listChar = $listChars[$indexChars];
+        //randomizzo gli elementi
+        $char = $listChar[rand(0, strlen($listChar) -1)];
+        //concateno la password con gli elementi randomizzati
+        $password .= $char;
+        //aumento il contatore
+        $indexChars++;
+        //resetto il contatore se sale troppo
+        if($indexChars === count($listChars)) $indexChars = 0;
       }
     
       // 3.
-      return str_shuffle($psw );
+      return str_shuffle($password);
     }
     
     $_SESSION['randomPassword'] = passwordGenerator($passlen);
