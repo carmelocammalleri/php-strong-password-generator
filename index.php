@@ -13,16 +13,34 @@ if(isset($_POST['lngPassword']) && !empty($_POST['lngPassword'])){
     $message = "!!!! Il numero inserito deve essere compreso fra $min e $max !!!!";
 
   }else{
-    $message = "il numero scelto è $passlen";
+    $message = "La tua password ha $passlen caratteri";
     
     session_start();
     
-    function passwordGenerator(){
-      var_dump('manda la funzione');
+    //length è in pratica la lunghezza che prendiamo nel valore passlen che viene letto dall'input
+    function passwordGenerator($length){
+      //var_dump('manda la funzione');
+
+      $psw = '';
+      $indexChars = 0;
+      $listChars = [
+          'abcdefghijklmnopqrstuvwxyz',
+          'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+          '0123456789',
+          '!?&%$<>^+-*/()[]{}@#_='
+      ];
       
+      //ciclo il randomizzatore
+      while(strlen($psw) < $length){
+        
+     
+      }
+    
+      // 3.
+      return str_shuffle($psw );
     }
     
-    $_SESSION['randomPassword'] = passwordGenerator();
+    $_SESSION['randomPassword'] = passwordGenerator($passlen);
   }
 }
 
@@ -34,11 +52,11 @@ require_once __DIR__ . '/partials/head.php';
 
   <div class="container">
     <h1>Generatore password casuali</h1>
-    <p><?php echo $message ?></p>
-
     <form action="index.php" method="POST">
       <input type="number" name="lngPassword" >
     </form>
+    <p><?php echo $message ?></p>
+
 
     <div>
       <h4>Password Generata</h4>
