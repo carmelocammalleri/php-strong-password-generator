@@ -64,15 +64,14 @@ if(isset($_POST['lngPassword']) && !empty($_POST['lngPassword'])){
 require_once __DIR__ . '/partials/head.php';
 ?>
 
-
 <body>
 
-  <div class="container">
-    <h1>Generatore password casuali</h1>
-    <form action="index.php" method="POST">
-      <input type="number" name="lngPassword" >
+  <div class="container p-3">
+    <h2 class="my-1">Generatore password casuali</h2>
+    <form class="my-3 text-primary" action="index.php" method="POST">
+      <p><?php echo $message ?></p>
+      <input class="form-control w-25 " type="number" name="lngPassword">
     </form>
-    <p><?php echo $message ?></p>
 
     <div>
       <h4>Password Generata</h4>
