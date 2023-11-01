@@ -42,8 +42,7 @@ if(isset($_POST['lngPassword']) && !empty($_POST['lngPassword'])){
         //resetto il contatore se sale troppo
         if($indexChars === count($listChars)) $indexChars = 0;
       }
-    
-      // 3.
+
       return str_shuffle($password);
     }
     
