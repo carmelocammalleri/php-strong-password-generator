@@ -14,7 +14,15 @@ if(isset($_POST['lngPassword']) && !empty($_POST['lngPassword'])){
 
   }else{
     $message = "il numero scelto è $passlen";
-    var_dump('manda la funzione');
+    
+    session_start();
+    
+    function passwordGenerator(){
+      var_dump('manda la funzione');
+      
+    }
+    
+    $_SESSION['randomPassword'] = passwordGenerator();
   }
 }
 
