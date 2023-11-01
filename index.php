@@ -3,6 +3,7 @@ $min= 8;
 $max= 32;
 $message= "Seleziona un numero di caratteri da $min a $max";
 
+//si controlla se passa anche una stringa vuota
 if(isset($_POST['lngPassword']) && !empty($_POST['lngPassword'])){
   
   $passlen = $_POST['lngPassword'];
