@@ -18,9 +18,11 @@ $message= "Seleziona un numero di caratteri da $min a $max";
   <div class="container">
     <h1>Generatore password casuali</h1>
     <p><?php echo $message ?></p>
-    <input type="text">
-    <input type="button" value="submit">
 
+    <form action="index.php" method="POST">
+      <input type="number" min="<?php echo $min ?>" max="<?php echo $max ?>">
+      <input type="button" value="submit">
+    </form>
 
     <div>
       <h4>Password Generata</h4>
